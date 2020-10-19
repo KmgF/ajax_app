@@ -8,8 +8,13 @@ class PostsController < ApplicationController
   # end
 
   def create
-    Post.create(content: params[:content])
-    redirect_to action: :index
+    #発展カリキュラム
+    post = Post.create(content: params[:content], checked: false ) #未読という情報を加えている
+    render jason:{ post: post } #レスポンスをJSONへ変更
+
+    #応用カリキュラム
+    # Post.create(content: params[:content])
+    # redirect_to action: :index
   end
 
 def checked
